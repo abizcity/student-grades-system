@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سامانه نمرات دانش‌آموزان</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            direction: rtl;
+        }
+        .container {
+            width: 300px;
+            margin: 100px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>ورود به سامانه نمرات</h2>
+        <input type="text" id="nationalCode" placeholder="کد ملی را وارد کنید">
+        <button onclick="getGrades()">مشاهده نمرات</button>
+        <div id="result"></div>
+    </div>
+    <script>
+        const students = {
+            "6520053899": { name: "مجتبی حسینی", math: 18, persian: 19 },
+            "0987654321": { name: "زهرا محمدی", math: 17, persian: 18 }
+        };
+
+        function getGrades() {
+            const code = document.getElementById("nationalCode").value;
+            const student = students[code];
+            if (student) {
+                document.getElementById("result").innerHTML = 
+                    `<p>نام: ${student.name}</p>
+                     <p>نمره ریاضی: ${student.math}</p>
+                     <p>نمره فارسی: ${student.persian}</p>`;
+            } else {
+                document.getElementById("result").innerHTML = "دانش‌آموزی با این کد ملی یافت نشد!";
+            }
+        }
+    </script>
+</body>
+</html>
